@@ -21,6 +21,7 @@ public class DatabaseMain
         try
         {
             BinarySearchTree bst = buildTreeFromFile("src\\HHDatabase\\pokemon.csv");
+            bst.printSideways(bst.root, 0);
         } // end of try
         catch (Exception e)
         {
