@@ -17,17 +17,17 @@ public class DatabaseMain
     {
         try
         {
-            BinarySearchTree bst = BinarySearchTree.buildTreeFromFile("src\\HHDatabase\\pokemon.csv");
+            BinarySearchTree bst = BinarySearchTree.buildTreeFromFile("src\\HHDatabase\\pokemon2.csv");
 
-            System.out.print(bst.root.toString());
-            //bst.printTree(bst.root);
+            //System.out.print(bst.root.toString());
+            bst.printSideways(bst.root, 0);
             
             //bst.printSideways(bst.root, 0);
         } // end of try
         catch (Exception e)
         {
             e.printStackTrace();
-            System.out.printf("%n%nSomething went wrong in main method.%n");
+            //System.out.printf("%n%nSomething went wrong in main method.%n");
         } // end of catch
     
     }  // end of main method

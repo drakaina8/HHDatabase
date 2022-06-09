@@ -35,7 +35,7 @@ public class Node
     // toString method, prints all field of node
     public String toString()
     {
-        String nodeString = "#" + this.pokedexNum + " " + this.name + ", " + this.type1 + ", " + this.legendary;
+        String nodeString = "#" + this.pokedexNum + " " + this.name + ", " + this.type1 + ", " + type2 + ", " + this.legendary;
 
         return nodeString;
     } // end of toString method

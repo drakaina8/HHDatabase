@@ -120,7 +120,7 @@ public class BinarySearchTree
                 bst.add(nodeList.get(i));
             } // end of for
             // adds indexes smaller than middNum
-            for (int i = 0; i < middleNum; i++)
+            for (int i = middleNum -1; i >= 0; i--)
             {
                 bst.add(nodeList.get(i));
             } // end of for
@@ -146,7 +146,7 @@ public class BinarySearchTree
             printSideways(root.right, level + 1);
             for (int i = 0; i < level; i++)
             {
-                System.out.println("    ");
+                System.out.print("    ");
             }
             System.out.println(root.toString());
             printSideways(root.left, level + 1);
@@ -165,4 +165,18 @@ public class BinarySearchTree
             
         }
     } // end of printTree method
+
+    // printTreeAsList method, prints the BST linearly in order
+    public void printTreeAsList()
+    {
+        if (this.root == null)
+        {
+            System.out.printf("%nThe tree's root is null.");
+        } // end of if
+
+        while (true)
+        {
+
+        } // end of while
+    } // end of printTreeAsList method
 } // end of BinarySearchTree class
