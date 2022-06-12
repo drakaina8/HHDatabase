@@ -10,6 +10,7 @@
 package HHDatabase;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,9 +19,12 @@ import java.util.ArrayList;
 public class BinarySearchTree 
 {
     protected Node root;
-    public BinarySearchTree()
+    private final UserInterface ui;
+
+    public BinarySearchTree(UserInterface ui)
     {
         this.root = null;
+        this.ui = ui;
     } // end of BinarySearchTree constructor
 
     // getRoot getter method, returns root Node
@@ -29,6 +33,7 @@ public class BinarySearchTree
         return this.root;
     } // end of getRoot method
 
+    /* TODO maybe delete, always throws NullPointerException
     // addRecursive method, inserts a new node using recursion
     public Node addRecursive(Node root, Node node)
     {
@@ -47,7 +52,7 @@ public class BinarySearchTree
 
         return node;
     } // end of addNode method
-
+    */
 
     // add method, inserts a new node non-recursively into the BST
     public void add(Node newNode)
@@ -61,7 +66,7 @@ public class BinarySearchTree
         
         while (true)
         {
-            if(currentNode.getKey() < newNode.getKey())
+            if(currentNode.getNum() < newNode.getNum())
             {
                 if (currentNode.right != null)
                 {
@@ -90,19 +95,18 @@ public class BinarySearchTree
     } // end of add method
 
     // buildTreeFromFile method
-    public static BinarySearchTree buildTreeFromFile(String path) 
+    public BinarySearchTree buildTreeFromFile(File file) 
         throws FileNotFoundException, IOException
     {
         String row = "";
         String[] rowValues;
         int num;
         boolean legendary;
-        BinarySearchTree bst = new BinarySearchTree();
         ArrayList<Node> nodeList = new ArrayList<>();
 
         try
         {
-            BufferedReader reader = new BufferedReader(new FileReader(path));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             while ((row = reader.readLine()) != null)
             {
                 rowValues = row.split(",");
@@ -117,12 +121,12 @@ public class BinarySearchTree
             // adds all subsequent indexes to binary search tree
             for (int i = middleNum; i <= nodeList.size() -1; i++)
             {
-                bst.add(nodeList.get(i));
+                this.add(nodeList.get(i));
             } // end of for
             // adds indexes smaller than middNum
             for (int i = middleNum -1; i >= 0; i--)
             {
-                bst.add(nodeList.get(i));
+                this.add(nodeList.get(i));
             } // end of for
         } // end of try
         catch (FileNotFoundException e)
@@ -130,7 +134,7 @@ public class BinarySearchTree
             e.printStackTrace();
         } // end of catch
 
-        return bst;
+        return this;
     } // end of buildTreeFromFile
 
 
@@ -167,16 +171,16 @@ public class BinarySearchTree
     } // end of printTree method
 
     // printTreeAsList method, prints the BST linearly in order
-    public void printTreeAsList()
+    public void printTreeAsList(Node node)
     {
-        if (this.root == null)
+        if (node == null)
         {
-            System.out.printf("%nThe tree's root is null.");
+            return;
         } // end of if
 
-        while (true)
-        {
-
-        } // end of while
+        printTreeAsList(node.left);
+        ui.printf(node.toString() + "%n");
+        printTreeAsList(node.right);
     } // end of printTreeAsList method
+
 } // end of BinarySearchTree class

@@ -41,10 +41,43 @@ public class Node
     } // end of toString method
 
     // getKey getter method, returns primaryKey value
-    public int getKey()
+    public int getNum()
     {
         return this.pokedexNum;
     } // end of getKey method
+
+    // getName getter, returns name as String
+    public String getName()
+    {
+        return this.name;
+    } // end of getName
+
+    //getType1 getter, returns type1 as String
+    public String getType1()
+    {
+        return this.type1;
+    } // end of getType1 method
+
+    //getType2 getter, returns type1 as String
+    public String getType2()
+    {
+        return this.type2;
+    } // end of getType2 method
+
+    // getStringLegendary, returns String representation of boolean value
+    public String getStringLegendary()
+    {
+        String legendaryString = "";
+        if (this.legendary)
+        {
+            legendaryString = "True";
+        } // end of if
+        else
+        {
+            legendaryString = "False";
+        } // end of else
+        return legendaryString;
+    } // end of getStringLegendary method
 
     // getLeft getter method, returns left node
     public Node getLeft()
