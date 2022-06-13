@@ -14,6 +14,7 @@
 
 package HHDatabase;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -53,6 +54,7 @@ public class DatabaseMain implements UserInterface
     {
         printf("%n%n~Database Menu~%n");
         printf("|l| Load Database into Binary Search Tree%n");
+        printf("|s| Search for an entry%n");
         printf("|a| Add an entry to the Binary Search Tree%n");
         printf("|d| Delete an entry from the Binary Search Tree%n");
         printf("|v| View Binary Search Tree%n");
@@ -83,13 +85,16 @@ public class DatabaseMain implements UserInterface
                     {
                         e.printStackTrace();
                         printf("Something went wrong with loading the file.");
-                        validSelection = false;
-                    }
+                    } // end of catch
+                    break;
+                case 's':
+                    printf(bst.searchByNum().toString());
                     break;
                 case 'a':
                     bst.add(userCreateNode());
                     break;
                 case 'd':
+                    //bst.delete();
                     break;
                 case 'v':
                     printTreeMenu();
@@ -261,7 +266,9 @@ public class DatabaseMain implements UserInterface
         {
             try
             {
-                FileWriter myWriter = new FileWriter(getFile(), true);
+                FileWriter fw = new FileWriter(getFile(), true);
+                BufferedWriter myWriter = new BufferedWriter(fw);
+                myWriter.newLine();
                 myWriter.write(node.getNum() + "," + node.getName() + "," 
                     + node.getType1() + "," + node.getType2() + "," + node.getStringLegendary());
                 printf("%nSaved entry to file.%n");

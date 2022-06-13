@@ -28,31 +28,11 @@ public class BinarySearchTree
     } // end of BinarySearchTree constructor
 
     // getRoot getter method, returns root Node
+    // TODO maybe delete, unused
     public Node getRoot()
     {
         return this.root;
     } // end of getRoot method
-
-    /* TODO maybe delete, always throws NullPointerException
-    // addRecursive method, inserts a new node using recursion
-    public Node addRecursive(Node root, Node node)
-    {
-        if (this.root == null)
-        {
-            this.root = node;
-        } // end of if
-        else if (node.getKey() < root.getKey())
-        {
-            root.left = addRecursive(root.left, node);
-        } // end of if
-        else if (node.getKey() > root.getKey())
-        {
-            root.right = addRecursive(root.right, node);
-        } // end of else if
-
-        return node;
-    } // end of addNode method
-    */
 
     // add method, inserts a new node non-recursively into the BST
     public void add(Node newNode)
@@ -93,6 +73,19 @@ public class BinarySearchTree
         } // end of while
         
     } // end of add method
+
+    // delete method, deletes a node from the Binary Search Tree
+    public void delete(Node root, int num)
+    {
+        if (root == null)
+        {
+            return;
+        } // end of if
+        if (root.getNum() > num)
+        {
+             
+        } // end of if
+    } // end of delete method
 
     // buildTreeFromFile method
     public BinarySearchTree buildTreeFromFile(File file) 
@@ -137,9 +130,33 @@ public class BinarySearchTree
         return this;
     } // end of buildTreeFromFile
 
+    // searchByNum method, searches the tree for an entry with the given key
+    // prints the full node data if found
+    public Node searchByNum()
+    {
+        int numToFind;
+        ui.printf("%nEnter the Pokedex number of the entry you'd like to find: ");
+        numToFind = ui.nextInt();
 
-    // treeFromList method
-    // public static 
+        while (root != null)
+        {
+            if (root.getNum() == numToFind)
+            {
+                //ui.printf(root.toString());
+                return root;
+            } // end of if
+            if (root.getNum() >= numToFind)
+            {
+                root = root.left;
+            } // end of if
+            else if (root.getNum() <= numToFind)
+            {
+                root = root.right;
+            } // end of else
+        } // end of while
+        ui.printf("%nThe number you entered does not exist in the database.%n");
+        return null;
+    } // end of searchByNum method
 
 
     // printSideways method
