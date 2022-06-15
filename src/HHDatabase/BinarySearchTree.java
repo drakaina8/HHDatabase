@@ -16,6 +16,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class BinarySearchTree 
 {
     protected Node root;
@@ -58,7 +60,7 @@ public class BinarySearchTree
                     break;
                 } // end of else
             } // end of if
-            else
+            else if(currentNode.getNum() > newNode.getNum())
             {
                 if (currentNode.left != null)
                 {
@@ -69,6 +71,12 @@ public class BinarySearchTree
                     currentNode.left = newNode;
                     break;
                 } // end of else
+            } // end of else if
+            else 
+            {
+                ui.printf("%nA new entry may not have the same number as an existing entry,%n"
+                        + "please try again.%n%n");
+                break;
             } // end of else
         } // end of while
         
@@ -173,19 +181,6 @@ public class BinarySearchTree
             printSideways(root.left, level + 1);
         }
     } // end of printSideways method
-
-    // printTree method
-    public void printTree(Node root)
-    {
-        //Node tempNode = this.root;
-        if (this.root != null)
-        {
-            System.out.print(" " + root.toString());
-            printTree(root.left);
-            printTree(root.right);
-            
-        }
-    } // end of printTree method
 
     // printTreeAsList method, prints the BST linearly in order
     public void printTreeAsList(Node node)

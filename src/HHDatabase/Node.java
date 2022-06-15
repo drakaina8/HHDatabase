@@ -1,15 +1,17 @@
 // Programmer: Hannah Hendrickson
 // Assignment 3 Database
 // Class: CS145 Hybrid01
-// Date:
-// Purpose: Create a binary search tree for a database
+// Date: 6/14/2022
+// Purpose: Create a binary search tree that populates from a csv file.
 
-// Notes:
+// Pokemon have Pokedex numbers which are unique and function as primary keys.
+
 
 package HHDatabase;
 
 public class Node 
 {
+    // Node fields
     private int pokedexNum;
     protected Node left;
     protected Node right;

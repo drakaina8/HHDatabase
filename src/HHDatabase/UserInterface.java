@@ -1,3 +1,12 @@
+// Programmer: Hannah Hendrickson
+// Assignment 3 Database
+// Class: CS145 Hybrid01
+// Date: 6/14/2022
+// Purpose: Create a binary search tree for a database
+
+// Notes: This interface was inspired and modeled after 
+// the UserInterface in the 20 questions lab.
+
 package HHDatabase;
 
 public interface UserInterface 
@@ -22,7 +31,4 @@ public interface UserInterface
     // Processes user's menu selections
     void userSelect(BinarySearchTree bst);
 
-    // Displays menu options to console
-    // TODO maybe delete from interface
-    void printMainMenu();
 } // end of interface UserInterface

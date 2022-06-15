@@ -1,16 +1,18 @@
 // Programmer: Hannah Hendrickson
 // Assignment 3 Database
 // Class: CS145 Hybrid01
-// Date:
+// Date: 6/14/2022
 // Purpose: Create a binary search tree for a database
 
-// Notes: the pokemon2.csv file staggers the order of pokemon
-// This helps display the binary search tree a little better.
-// The pokemon.csv file has the same entries but in numerical order.
+// Notes: I didn't end up adding a delete function to the menu.
 
-// I chose to use a small database of pokemon for this assignment
-// because pokemon numbers are already reminiscent of primary keys.
+// I chose to use a csv files of lists of pokemon for this assignment.
+// There are a couple different versions included with my project.
+// AllPokemon.csv lists all 721 pokemon.
+// pokemonSmall.csv has a small list of pokemon
 
+// pokemonStaggered.csv has the same pokemon as pokemonSmall.csv
+//  except the order is staggered to better display the branching of the tree.
 
 package HHDatabase;
 
@@ -31,18 +33,16 @@ public class DatabaseMain implements UserInterface
         DatabaseMain dbMain = new DatabaseMain();
         try
         {
-            //dbMain.printMainMenu();
             dbMain.userSelect(dbMain.bst);
 
         } // end of try
         catch (Exception e)
         {
             e.printStackTrace();
-            //System.out.printf("%n%nSomething went wrong in main method.%n");
         } // end of catch
-    
     }  // end of main method
 
+    // DatabaseMain constructor
     public DatabaseMain()
     {
         console = new Scanner(System.in);
@@ -56,7 +56,7 @@ public class DatabaseMain implements UserInterface
         printf("|l| Load Database into Binary Search Tree%n");
         printf("|s| Search for an entry%n");
         printf("|a| Add an entry to the Binary Search Tree%n");
-        printf("|d| Delete an entry from the Binary Search Tree%n");
+        //printf("|d| Delete an entry from the Binary Search Tree%n");
         printf("|v| View Binary Search Tree%n");
         printf("|q| Quit the program%n%n");
     } // end of mainMenu method
@@ -93,9 +93,7 @@ public class DatabaseMain implements UserInterface
                 case 'a':
                     bst.add(userCreateNode());
                     break;
-                case 'd':
-                    //bst.delete();
-                    break;
+                //case 'd':
                 case 'v':
                     printTreeMenu();
                     break;
